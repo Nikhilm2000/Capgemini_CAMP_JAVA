@@ -1,0 +1,81 @@
+package com.capgemini.day5;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+import com.capgemini.EmployeeManagement.Employee;
+
+class Employee {
+	int id;
+	String name;
+	Double Salary;
+	String Department;
+
+	public Employee() {
+
+	}
+
+	public Employee(int id, String name, Double salary, String department) {
+		super();
+		this.id = id;
+		this.name = name;
+		Salary = salary;
+		Department = department;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getSalary() {
+		return Salary;
+	}
+
+	public void setSalary(Double salary) {
+		Salary = salary;
+	}
+
+	public String getDepartment() {
+		return Department;
+	}
+
+	public void setDepartment(String department) {
+		Department = department;
+	}
+
+	public String toString() {
+		return "[----Name----:" + name + "" + "----id----:" + id + "" + "----Salary----:" + Salary + ""
+				+ "----Department----:" + Department + "]";
+	}
+}
+
+public class MyLinkedList {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		LinkedList<Employee> list = new LinkedList<Employee>();
+		list.addFirst(new Employee(101, "Nikhil", 29000.0, "Cloud"));
+		list.add(new Employee(102, "Pavan", 28000.0, "FullStack"));
+		list.add(new Employee(103, "Mallik", 34000.0, "Developer"));
+		list.add(new Employee(104, "Pavan", 8800.0, "2021/10/14"));
+		list.add(new Employee(105, "Arjun", 2400.0, "2022/10/14"));
+		list.add(new Employee(106, "Sharma", 1900.0, "2021/08/28"));
+		list.add(new Employee(107, "Zulfi", 3400.0, "2022/01/15"));
+		list.add(new Employee(108, "Bharath", 2200.0, "2021/10/14"));
+
+		System.out.println(list);
+
+	}
+}

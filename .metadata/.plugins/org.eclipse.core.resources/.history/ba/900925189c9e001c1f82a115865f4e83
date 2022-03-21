@@ -1,0 +1,23 @@
+package com.capgemini.day3;
+abstract interface Employee{
+	//not able to give body of methods ,only declaration
+	public void print();
+}
+class Dept{
+	public void printDept() {
+		System.out.println("Print Department");
+	}
+}
+//Interface need to implemented by any class,if not we cant use
+class Company extends Dept implements Employee{
+	public void print() {
+		System.out.println("Method Interface");
+	}
+}
+
+public class Abstraction {
+	public static void main(String[] args) {
+		Company cmp=new Company();
+		cmp.print();
+	}
+}

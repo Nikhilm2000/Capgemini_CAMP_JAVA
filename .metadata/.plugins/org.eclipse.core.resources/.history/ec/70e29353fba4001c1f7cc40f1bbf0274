@@ -1,0 +1,36 @@
+package com.capgemini.day5;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.TreeSet;
+
+public class MyLinkedHashSet {
+	public static void main(String[] args) {
+		LinkedHashSet<Integer> lhs=new LinkedHashSet<Integer>();
+		lhs.add(25);
+		lhs.add(15);
+		lhs.add(25);
+		lhs.add(9);
+		lhs.add(30);
+		lhs.add(9);
+		lhs.add(10);
+		
+		System.out.println(lhs);//LinkedHashSet maintains the insertion order
+		HashSet<Integer> set1 = new HashSet<Integer>();
+		set1.add(22);
+		set1.add(30);
+
+		lhs.addAll(set1);
+		System.out.println(lhs);
+		
+		TreeSet<Integer> tree=new TreeSet<Integer>();
+		tree.addAll(lhs);
+		
+		Iterator<Integer> it=tree.descendingIterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
+		
+	}
+}

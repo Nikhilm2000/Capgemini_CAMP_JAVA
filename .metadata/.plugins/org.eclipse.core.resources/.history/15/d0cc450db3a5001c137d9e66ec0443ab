@@ -1,0 +1,60 @@
+package com.capgemini.day6;
+
+interface Helloworld {
+	void hello();
+}
+
+interface Execute {
+	public void add(int a, int b);
+}
+
+interface Upper {
+	public String toUp(String str);
+}
+
+interface Charat {
+	public char charat(String str1);
+}
+
+interface Even {
+	public int evn(int en);
+}
+interface Num{
+	public int checknum(int no);
+}
+
+public class MyLambda {
+	public static void main(String[] args) {
+		Helloworld hw=() -> System.out.println("Hello World");
+		hw.hello();
+		
+		Execute e=(a,b) -> System.out.println(a + b);
+		e.add(10,20);
+		
+		Upper up= str-> str.toUpperCase();
+		String str=up.toUp("nikhil");
+		System.out.println(str);
+		
+		Charat ch=str1-> str1.charAt(0);
+		String str1=ch.charat("Nikhil");
+		System.out.println(str1);
+		
+		Even ev=en-> {
+			if(en%2==0) System.out.println(en+" is Even"); 
+			else System.out.println(en+" is Odd");
+			return en;
+		};
+		ev.evn(3);
+		ev.evn(4);
+		
+		Num n=no-> {
+			if(no>0) System.out.println(no+" is Positive"); 
+			else System.out.println(no+" is Negative");
+			return no;
+		};
+		n.checknum(-3);
+		n.checknum(4);
+		
+		
+	}
+}

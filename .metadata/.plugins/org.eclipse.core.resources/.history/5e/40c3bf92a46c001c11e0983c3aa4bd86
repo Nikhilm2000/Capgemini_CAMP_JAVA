@@ -1,0 +1,43 @@
+package nik;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
+public class hello {
+public static void main(String[] args) {
+	System.out.println("hhhh");
+	int num=10;
+	float f=(float)0.8;
+	double d=22.3;
+	System.out.println("num="+num);
+	System.out.println("float="+f);
+	System.out.println("double="+d);
+	System.out.println("int maix value="+ Integer.MAX_VALUE);
+	boolean tf;
+	tf=true;
+	System.out.println("tf="+tf);
+	System.out.println("tf="+(!tf));
+	char a;
+	a='z';
+	System.out.println("char="+a);
+	
+	System.out.println("OPERATOTR");
+	int x=10;
+	int y=-2;
+	
+	int z=x+y;
+	System.out.println("z"+z);
+	
+	z=x-y;
+	System.out.println("z"+z);
+	
+	z=x/y;
+	System.out.println("z"+z);
+	
+	z=x%y;
+	System.out.println("z"+z);
+	
+	System.out.println("x<y"+( x<y));
+	System.out.println(x>5? "greaater":"not great");
+	
+}
+}

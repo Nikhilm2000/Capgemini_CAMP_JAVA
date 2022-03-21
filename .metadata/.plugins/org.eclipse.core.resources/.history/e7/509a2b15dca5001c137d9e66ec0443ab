@@ -1,0 +1,24 @@
+package com.capgemini.day6;
+
+import java.util.LinkedList;
+import java.util.stream.Stream;
+
+public class MyStreamApi {
+
+	public static void main(String[] args) {
+
+		LinkedList<String> list = new LinkedList<String>();
+
+		list.add("Rohith");
+		list.add("Nikhil");
+		list.add("Mallik");
+		list.add("Pavan");
+		list.add("Arjun");
+		
+		Stream<String> st=list.stream();
+		st.forEach(names->System.out.println(names));
+		list.stream().forEach(names->System.out.println(names));
+		list.stream().forEach(System.out::println);
+		
+	}
+}

@@ -1,0 +1,12 @@
+package com.capgemini.day6;
+
+interface Helloworld {
+	String hello(String name);
+}
+
+public class MyLambda {
+	public static void main(String[] args) {
+		Helloworld hw=(String name) -> {return "Hello"+ name; };
+		hw.hello("World");
+	}
+}

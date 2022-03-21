@@ -1,0 +1,32 @@
+package com.capgemini.day6;
+
+interface Helloworld {
+	void hello();
+}
+interface Execute{
+	public void add(int a,int b);
+}
+interface Upper{
+	public String toUp(String str);
+}
+interface Charat{
+	public String charat(String str1);
+}
+public class MyLambda {
+	public static void main(String[] args) {
+		Helloworld hw=() -> System.out.println("Hello World");
+		hw.hello();
+		
+		Execute e=(a,b) -> System.out.println(a + b);
+		e.add(10,20);
+		
+		Upper up= str-> str.toUpperCase();
+		String str=up.toUp("nikhil");
+		System.out.println(str);
+		
+		Charat ch=str1-> str1.substring(0);
+		String str1=ch.charat("Nikhil");
+		System.out.println(str1);
+		
+	}
+}

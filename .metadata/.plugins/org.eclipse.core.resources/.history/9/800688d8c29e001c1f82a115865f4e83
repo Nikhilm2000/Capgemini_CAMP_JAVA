@@ -1,0 +1,53 @@
+package com.capgemini.day3;
+abstract interface Mobile{
+	public void calling();
+	public void sendSMS();
+}
+class Samsung implements Mobile{
+	@Override
+	public void sendSMS() {
+		System.out.println("Samsung SMS");
+		
+	}
+	@Override
+	public void calling() {
+		System.out.println("Volte Calling");
+	}
+	
+}
+class Apple extends Samsung implements Mobile{
+	@Override
+	public void sendSMS() {
+		System.out.println("APPLE SMS");
+		
+	}
+	@Override
+	public void calling() {
+		System.out.println("Volte Calling");
+	}
+}
+abstract class BBKbrnd implements Mobile {
+	@Override
+	public void sendSMS() {
+		System.out.println("BBK SMS");
+		
+	}
+	@Override
+	public void calling() {
+		System.out.println("Volte Calling");
+	}
+	abstract public void brand();
+}
+class BBKBrands extends BBKbrnd{
+	public void brand() {
+		System.out.println("Mi,Vivo,OPPO,Realme,OnePlus");
+	}
+}
+public class MobileAbstraction {
+	public static void main(String[] args) {
+		BBKBrands BBK=new BBKBrands();
+		BBK.brand();
+		BBK.sendSMS();
+	}
+
+}

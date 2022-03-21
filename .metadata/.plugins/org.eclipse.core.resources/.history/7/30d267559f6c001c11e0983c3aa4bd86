@@ -1,0 +1,16 @@
+package nik;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
+public class hello {
+public static void main(String[] args) {
+	System.out.println("hhhh");
+	int num=10;
+	float f=(float)0.8;
+	double d=22.3;
+	System.out.println("num="+num);
+	System.out.println("float="+f);
+	System.out.println("double="+d);
+	System.out.println("int maix value="+ Integer.MAX_VALUE);
+}
+}

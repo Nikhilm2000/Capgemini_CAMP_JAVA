@@ -1,0 +1,60 @@
+package com.capgemini.day3;
+abstract interface Mobile{
+	public void Price();
+	public void Brand();
+}
+class Mobile1 implements Mobile{
+	@Override
+	public void Price() {
+		System.out.println("25000");
+		
+	}
+	@Override
+	public void Brand() {
+		System.out.println("Samsung S20");
+	}
+	
+}
+class Laptop  implements Mobile{
+	public void Price() {
+		System.out.println("150000");
+		
+	}
+	public void Brand() {
+		System.out.println("Apple MacBook Pro");
+	}
+}
+abstract class Student1{
+	public void sendUSN() {
+		System.out.println("1by19cs407");
+		
+	}
+
+	public void Name() {
+		System.out.println("Nikhil");
+	}
+	abstract public void Marks();
+}
+class Marks extends Student1{
+	@Override
+	public void Marks() {
+		System.out.println("Marks:92,45,65,77,88");
+	}
+}
+public class MobileAbstraction {
+	public static void main(String[] args) {
+		Marks BBK=new Marks();
+		BBK.Name();
+		BBK.sendUSN();
+		BBK.Marks();
+		System.out.println("Laptop");
+		Laptop lt=new Laptop();
+		lt.Brand();
+		lt.Price();
+		System.out.println("Laptop");
+		Mobile1 mob=new Mobile1();
+		mob.Brand();
+		mob.Price();
+	}
+
+}

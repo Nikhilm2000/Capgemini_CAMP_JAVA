@@ -1,0 +1,18 @@
+package com.capgemini.day5;
+
+import java.util.ArrayList;
+
+public class Arraylist {
+	public static void main(String[] args) {
+		ArrayList list=new ArrayList();
+		list.add(100);
+		list.add("Nikhil");
+		list.add(25400.00);
+		list.add(25);
+		
+		System.out.println(list);
+	}
+	
+
+	
+}

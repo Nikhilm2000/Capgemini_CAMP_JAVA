@@ -1,0 +1,33 @@
+package com.capgemini.day6;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class MyStreamApi {
+
+	public static void main(String[] args) {
+
+		List<Integer> ls = new ArrayList<Integer>();
+		ls.add(34);
+		ls.add(74);
+		ls.add(13);
+		ls.add(1);
+		ls.add(55);
+
+		Stream<Integer> st = ls.stream();
+		st.forEach(names -> System.out.println(names));
+		//ls.stream().forEach(names -> System.out.println(names));
+		//ls.stream().forEach(System.out::println);
+
+		List<Integer> ls2= ls.stream()
+				   .filter((a)->(a >= 10))
+				   .sorted(Collections.reverseOrder()) 
+				   .map(a->a+a/2)
+				   .collect(Collectors.toList()); //take the value one by one and collect and return it
+			
+			  ls2.forEach(System.out::println);	}
+}

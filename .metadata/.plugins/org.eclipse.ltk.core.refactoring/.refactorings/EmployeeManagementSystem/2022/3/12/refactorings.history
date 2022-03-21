@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Employee.java&apos; to &apos;day5/src/com.capgemini.day5&apos;&#x0D;&#x0A;- Original project: &apos;EmployeeManagementSystem&apos;&#x0D;&#x0A;- Destination element: &apos;day5/src/com.capgemini.day5&apos;&#x0D;&#x0A;- Original element: &apos;com.capgemini.EmployeeManagement.Employee.java&apos;" description="Copy compilation unit" destination="=day5/src&lt;com.capgemini.day5" element1="/src&lt;com.capgemini.EmployeeManagement{Employee.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1647421322792" units="1" version="1.0"/>
+</session>

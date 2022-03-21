@@ -1,0 +1,55 @@
+package com.capgemini.day3;
+
+class Employee1{
+	//variables are private
+	//only class method will have access to these private variable
+	private String name;
+	private int ssn;
+	private String dept;
+	
+	public Employee1(String name,int ssn,String dept) {
+		this.name=name;
+		this.ssn=ssn;
+		this.dept=dept;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public int getSSN() {
+		return this.ssn;
+	}
+	public String getDept() {
+		return this.dept;
+	}
+	public void setName(String name) {
+		this.name=name;
+	}
+	public void setSSN(int ssn) {
+		this.ssn=ssn;
+	}
+	public void setDept(String dept) {
+		this.dept=dept;
+	}
+	public String toString() {
+		return "Name="+name+"SSN="+ssn+"Department="+dept;
+	}
+}
+class Department{
+	String dept;
+	public Department(String dept){
+		this.dept=dept;
+	}
+	public String getDept() {
+		return this.dept;
+	}
+	public void setDept(String dept) {
+		this.dept=dept;
+	}
+}
+public class Encapsulation {
+	public static void main(String[] args) {
+		Employee1 emp=new Employee1("Nikhil",2022,"CloudGCP");
+		System.out.println(emp.toString());
+	}
+}

@@ -1,0 +1,12 @@
+package com.capgemini.day3;
+class Student{
+	
+}
+public class ObjectClass {
+	public static void main(String[] args) {
+		Student std=new Student();
+		System.out.println(std.hashCode());
+		System.out.println(std.getClass());
+		System.out.println(std.equals(std));
+	}
+}

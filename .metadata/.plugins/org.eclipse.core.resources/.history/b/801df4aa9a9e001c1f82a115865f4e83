@@ -1,0 +1,17 @@
+package com.capgemini.day3;
+class Student{
+	//default constructor will be created by compiler
+@Override
+	public String toString() {
+		return "Hello Bhai";
+	}
+}
+public class ObjectClass {
+	public static void main(String[] args) {
+		Student std=new Student();
+		System.out.println(std.hashCode());
+		System.out.println(std.getClass());
+		System.out.println(std.equals(std));
+		System.out.println(std.toString());
+	}
+}

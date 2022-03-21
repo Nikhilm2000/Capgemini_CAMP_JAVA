@@ -1,0 +1,27 @@
+package day4;
+import java.util.*;
+class OddException extends Exception{
+	OddException(String message){
+	super(message);
+	}
+}
+public class CustomException {
+	public static void main(String[] args) throws OddException {
+		try {
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		if(a%2==0) {
+			
+			System.out.println(a+"is Even number");
+		}
+		else {
+			throw new OddException("Enter even number only");
+		}
+		
+	}
+		catch(Exception e) {
+			System.out.println("Exception");
+			e.printStackTrace();
+		}
+	}
+}
