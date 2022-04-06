@@ -1,4 +1,4 @@
-package com.capgemini.EmployeeManagement;
+package com.capgemini.employeemanagement;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,18 +9,18 @@ public class EmployeeManagement {
 //Array
 	public static void main(String[] args) {
 		// Array of object
-		Employee list[] = new Employee[10];
+		Employee[] list = new Employee[10];
 
 		list[0] = new Employee(101, "Rohith", 2800.0, "2022/10/14");
 		list[1] = new Employee(102, "Nikhil", 4900.0, "2021/08/28");
-		list[2] = new Employee(103, "Mallik", 5400.0, "2022/01/15");
+		list[2] = new Employee(103, "Mallik", 5400.0, "2022/01/19");
 		list[3] = new Employee(104, "Pavan", 8800.0, "2021/10/14");
-		list[4] = new Employee(105, "Arjun", 2400.0, "2022/10/14");
-		list[5] = new Employee(106, "Sharma", 1900.0, "2021/08/28");
+		list[4] = new Employee(105, "Arjun", 2400.0, "2022/08/14");
+		list[5] = new Employee(106, "Sharma", 1900.0, "2021/02/28");
 		list[6] = new Employee(107, "Zulfi", 3400.0, "2022/01/15");
-		list[7] = new Employee(108, "Bharath", 2200.0, "2021/10/14");
-		list[8] = new Employee(109, "Kishan", 2000.0, "2022/10/14");
-		list[9] = new Employee(110, "Ishan", 3900.0, "2021/08/28");
+		list[7] = new Employee(108, "Bharath", 2200.0, "2021/01/14");
+		list[8] = new Employee(109, "Kishan", 2000.0, "2022/01/14");
+		list[9] = new Employee(110, "Ishan", 3900.0, "2021/03/28");
 
 		int counter = 0;
 		Scanner sc = new Scanner(System.in);
@@ -29,10 +29,10 @@ public class EmployeeManagement {
 			System.out.println("Press 1 for Adding Employee Details ");
 			System.out.println("Press 2 for Creating New Employee List  ");
 			System.out.println("Press 3 to Modify Employee Details ");
-			System.out.println("Press 4 to Print maximum Salary of Employee ");
-			System.out.println("Press 5 to Print minimum Salary of Employee ");
+			System.out.println("Press 4 to Print maximum salary of Employee ");
+			System.out.println("Press 5 to Print minimum salary of Employee ");
 			System.out.println("Press 6 to Print Sort the Name of Employee ");
-			System.out.println("Press 7 to Print Sort the Salary of Employee ");
+			System.out.println("Press 7 to Print Sort the salary of Employee ");
 			System.out.println("Press 8 to Display");
 			System.out.println("Press 9 Exit");
 			int choice = sc.nextInt();
@@ -56,11 +56,11 @@ public class EmployeeManagement {
 				counter = counter + 1;
 				break;
 			case 2:
-				Employee list2[] = new Employee[4];
-				list2[0] = new Employee(101, "Mike", 2400.0, "2022/10/14");
-				list2[1] = new Employee(102, "Nikhil", 2900.0, "2021/08/28");
-				list2[2] = new Employee(103, "Mallik", 3400.0, "2022/01/15");
-				list2[3] = new Employee(104, "Pavan", 2800.0, "2021/10/14");
+				Employee[] list2 = new Employee[4];
+				list2[0] = new Employee(101, "Mike", 2400.0, "2022/05/14");
+				list2[1] = new Employee(102, "Nikhil", 2900.0, "2021/08/08");
+				list2[2] = new Employee(103, "Mallik", 3400.0, "2022/01/25");
+				list2[3] = new Employee(104, "Pavan", 2800.0, "2021/04/24");
 				for (Employee e : list2) {
 
 					System.out.println(" List2 Employees are :" + e);
@@ -70,7 +70,7 @@ public class EmployeeManagement {
 			case 3:
 				System.out.println("Enter index value of employee to be modified");
 				int i = sc.nextInt();
-				System.out.println("Which field you want to modify 1:ID 2:Name 3:Salary ");
+				System.out.println("Which field you want to modify 1:ID 2:Name 3:salary ");
 				int ch = sc.nextInt();
 				if (ch == 1) {
 					System.out.println("Enter new emp id to change");
@@ -83,7 +83,7 @@ public class EmployeeManagement {
 				} else if (ch == 3) {
 					System.out.println("Enter  emp salary to change");
 					double nsalary = sc.nextDouble();
-					list[i].Salary = nsalary;
+					list[i].salary = nsalary;
 				}
 				for (Employee e : list) {
 					System.out.println("After Modification" + e);
@@ -93,8 +93,8 @@ public class EmployeeManagement {
 			case 4:
 				double maxvalue = 0.0;
 				for (int j = 0; j < list.length; j++) {
-					if (list[j].Salary > maxvalue) {
-						maxvalue = list[j].Salary;
+					if (list[j].salary > maxvalue) {
+						maxvalue = list[j].salary;
 					}
 				}
 				System.out.println(maxvalue);
@@ -103,8 +103,8 @@ public class EmployeeManagement {
 			case 5:
 				double minvalue = 99999.99;
 				for (int k = 0; k < list.length; k++) {
-					if (list[k].Salary < minvalue) {
-						minvalue = list[k].Salary;
+					if (list[k].salary < minvalue) {
+						minvalue = list[k].salary;
 					}
 				}
 				System.out.println(minvalue);
@@ -126,16 +126,16 @@ public class EmployeeManagement {
 			case 7:
 				for (int x = 0; x < list.length; x++) {
 					for (int y = x + 1; y < list.length; y++) {
-						double tmp = 0.0;
-						if (list[x].Salary > list[y].Salary) {
-							tmp = list[x].Salary;
-							list[x].Salary = list[y].Salary;
-							list[y].Salary = tmp;
+						double tmp;
+						if (list[x].salary > list[y].salary) {
+							tmp = list[x].salary;
+							list[x].salary = list[y].salary;
+							list[y].salary = tmp;
 						}
 					}
 				}
 				for (Employee e : list) {
-					System.out.println(e.Salary);
+					System.out.println(e.salary);
 				}
 				break;
 
@@ -143,11 +143,13 @@ public class EmployeeManagement {
 				for (Employee e : list) {
 					System.out.println(e);
 				}
+				break;
 			case 9:
 				break;
 			default:
 				System.out.println("Enter a valid choice");
 			}
+			sc.close();
 
 		}
 	}

@@ -1,9 +1,5 @@
 package com.capgemini.day6;
 
-import java.lang.*;
-import java.util.Iterator;
-import java.util.LinkedList;
-
 interface Helloworld {
 	void hello();
 }

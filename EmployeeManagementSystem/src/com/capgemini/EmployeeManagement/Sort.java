@@ -1,12 +1,11 @@
-package com.capgemini.EmployeeManagement;
+package com.capgemini.employeemanagement;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Sort {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
-		String arr[] = { "Arjun", "Zulfi", "Manish", "Nikhil", "Bharath", "Pavan" };
+		String[] arr = { "Arjun", "Zulfi", "Manish", "Nikhil", "Bharath", "Pavan" };
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr.length; j++) {
 				if (arr[j].compareTo(arr[i]) > 0) {
@@ -31,7 +30,7 @@ public class Sort {
 				break;
 			}
 			else System.out.println("Not found");
-			
+			sc.close();
 		}
 	}
 }

@@ -1,10 +1,10 @@
-package com.capgemini.EmployeeManagement;
+package com.capgemini.employeemanagement;
 
 
 public class Employee {
 	int id;
 	String name;
-	double Salary;
+	double salary;
 	 String doj;
 	
 	public Employee() {
@@ -15,7 +15,7 @@ public class Employee {
 		super();
 		this.id = id;
 		this.name = name;
-		Salary = salary;
+		this.salary = salary;
 		this.doj = doj;
 	}
 
@@ -35,12 +35,12 @@ public class Employee {
 		this.name = name;
 	}
 
-	public double getSalary() {
-		return Salary;
+	public double getsalary() {
+		return salary;
 	}
 
-	public void setSalary(double salary) {
-		Salary = salary;
+	public void setsalary(double salary) {
+		this.salary = salary;
 	}
 
 	public String getDoj() {
@@ -52,13 +52,10 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" +Salary + ", doj=" + doj + "]";
+		return "Employee [id=" + id + ", name=" + name + ", salary=" +salary + ", doj=" + doj + "]";
 	}
 	
 	public int compareTo(Employee employee) {
 		return getName().compareTo(employee.getName());
 	}
-
-	
-
 }
