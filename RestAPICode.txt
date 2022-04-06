@@ -1,0 +1,359 @@
+What is REST?
+=================
+|-The REST stands for REpresentational State Transfer
+ 
+-State means data
+-REpresentational means formats (such as XML, JSON, YAML, HTML, etc)
+-Transfer means carry data between consumer and provider using the HTTP protocol
+
+|-A REST API is an intermediary Application Programming Interface that enables two applications to communicate with each other over HTTP, much like how servers communicate to browsers.
+
+
+What is a RESTful API?  
+============================
+|-A RESTful API (or application program interface) uses HTTP requests to GET, PUT, POST, and DELETE data following the REST standards.  This allows two pieces of software to communicate with each other. In essence, REST API is a set of remote calls using standard methods to return data in a specific format. 
+
+|-The systems that interact in this manner can be very different. Each app may use a unique programming language, operating system, database, etc. So, how do we create a system that can easily communicate and understand other apps?? This is where the Rest API is used as an interaction system.
+
+
+Resources
+=============
+|-A RESTful resource is anything that is addressable over the web. By addressable, we mean resources that can be accessed and   transferred between clients and servers.
+
+Here are some examples of REST resources:
+=============================================
+-An employee, department, projects in IT company
+-A student in a classroom in a school
+-A search result for a particular item in a web index, such as Google
+-Users of the system.
+-Courses in which a student is enrolled.
+-A user's timeline of posts.
+-The users that follow another user.
+-An article about programming
+
+|-REST architecture treats every content as a resource. These resources can be Text Files, Html Pages, Images, Videos or Dynamic   Business Data.
+
+
+URI
+===========
+|-A URI (Uniform resource identifier) is a string of characters used to identify a resource over the web. In simple words, the URI in   a RESTful web service is a hyperlink to a resource, and it is the only means for clients and servers to exchange representations.
+
+
+|-The client uses a URI to locate the resources over the web, sends a request to the server, and reads the response. 
+
+For example:
+
+Method	Url		Description	
+GET	/api/todos	Get all todos which belongs to logged in user	
+GET	/api/todos/{id}	Get todo by id (If todo belongs to logged in user)	
+POST	/api/todos	Create new todo (By logged in user)	
+PUT	/api/todos/{id}	Update todo (If todo belongs to logged in user)	
+DELETE	/api/todos/{id}	Delete todo (If todo belongs to logged in user)	
+
+
+
+
+The representation of resources
+==================================
+|-The representation of resources is what is sent back and forth between clients and servers in a RESTful system. A representation is  a temporal state of the actual data located in a storage device at the time of request. 
+
+|-Different clients can consume different representations of the same resource. Therefore, a representation can take various forms, such as an image, a text file, an XML, or a JSON format. 
+
+For example: Below is the resource JSON representation:
+Sign Up -> /api/auth/signup
+
+
+{
+	"firstName": "ramesh",
+	"lastName": "fadatare",
+	"username": "ramesh",
+	"password": "password",
+	"email": "javaguides@gmail.com"
+}
+
+Log In -> /api/auth/signin
+{
+	"usernameOrEmail": "ramesh",
+	"password": "password"
+}
+
+
+HTTP POST Method
+=========================
+
+|-The HTTP POST request is most commonly used to create new resources. When talking strictly in terms of REST, POST methods are used  to create a new resource into the collection of resources.
+
+Upon successful creation, an HTTP code 201 is returned, and the address of the created resource is also transmitted in the ‘Location’ header. 
+
+Here are some examples for HTTP POST requests:
+
+HTTP POST	- http://www.domain/api/users - Create User
+
+HTTP POST	- http://www.domain/api/posts - Create Post
+
+HTTP POST	- http://www.domain/api/posts/{postId}/comments - Create new comment for post with id = postId
+
+
+HTTP PUT Method
+================
+|-Use PUT APIs primarily to update existing resource (if the resource does not exist, then API may decide to create a new resource or not). If a new resource has been created by the PUT API, the origin server MUST inform the user agent via the HTTP response code 201 (Created) response and if an existing resource is modified, either the 200 (OK) or 204 (No Content) response codes SHOULD be sent to indicate successful completion of the request.
+
+Here are some examples for HTTP Put requests:
+
+HTTP PUT	- http://www.domain/api/users/{username} - Update user
+
+HTTP PUT	- http://www.domain/api/posts/{id} - Update post by id
+
+HTTP PUT	- http://www.domain/api/posts/{postId}/comments/{id} - Update comment by id if it belongs to post with id = postId
+
+
+
+HTTP DELETE Method
+====================
+|-Use DELETE APIs to delete resources (identified by the Request-URI).
+
+|-A successful response of DELETE requests SHOULD be HTTP response code 200 (OK) if the response includes an entity describing the status, 202 (Accepted) if the action has been queued, or 204 (No Content) if the action has been performed but the response does not include an entity.
+
+Here are some examples for HTTP Delete requests:
+
+DELETE	http://www.domain/api/users/{username}	- Delete user
+
+DELETE	http://www.domain/api/posts/{id} - Delete post 
+
+DELETE	http://www.domain/api/posts/{postId}/comments/{id} - Delete comment by id if it belongs to post with id = postId
+
+
+
+4. HTTP Status Codes
+For every HTTP request, the server returns a status code indicating the processing status of the request. Let's see the frequently used HTTP status codes:
+
+1xx: Information 
+Communicates transfer protocol-level information
+100: Continue
+
+2xx: Success
+This indicates that the client’s request was accepted successfully.
+
+200: OK
+201: Created
+202: Accepted
+204: No Content
+
+3xx: Redirect
+This indicates that the client must take some additional action in order to complete their request.
+
+301: Moved Permanently
+307: Temporary Redirect
+
+4xx: Client Error
+This category of error status codes points the finger at clients.
+
+400: Bad Request
+401: Unauthorized
+403: Forbidden
+404: Not found
+
+5xx Server Error
+The server takes responsibility for these error status codes.
+
+500: Internal Server Error
+501: Not Implemented
+502: Bad Gateway
+503: Service Unavailable
+504: Gateway Timeout
+
+
+What is RestController?
+==========================
+
+RestController: 
+================
+|-RestController is used for making restful web services with the help of the @RestController annotation. This annotation is used at  the class level and allows the class to handle the requests made by the client.
+
+|-Spring RestController takes care of mapping request data to the defined request handler method. Once response body is generated from the handler method, it converts it to JSON or XML response.
+
+|-Spring RestController annotation is a convenience annotation that is itself annotated with @Controller and @ResponseBody. This annotation is applied to a class to mark it as a request handler.
+
+
+
+
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloWorldController {
+
+	@GetMapping("/hello")
+	public String helloWorld() {
+		return "Hello World";
+	}
+}
+
+
+
+
+Returning Java Bean
+===================
+package com.example.demo.entity;
+
+public class Student {
+	private String firstName;
+	private String lastName;
+	public Student(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+
+}
+
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Student;
+
+@RestController
+public class StudentController {
+
+	@GetMapping("/student")
+	public Student getStudent() {
+		return new Student("john", "mark");
+	}
+	
+	@GetMapping("/students")
+	public List<Student> getStudents() {
+		List<Student> studList=new ArrayList<Student>();
+		studList.add(new Student("Shubham", "Mishra"));
+		;
+		studList.add(new Student("Rohit", "Sharma"));;
+		studList.add(new Student("Virat", "Khoti"));;
+		studList.add(new Student("Shikhar", "Dhawan"));;
+		studList.add(new Student("Sachin", "Tendulkar"));
+		
+		return studList;
+		
+		
+	}
+}
+
+
+
+
+
+
+package com.example.demo.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Student;
+
+@RestController
+public class StudentController {
+
+	@GetMapping("/student")
+	public Student getStudent() {
+		return new Student("john", "mark");
+	}
+	
+	@GetMapping("/students")
+	public List<Student> getStudents() {
+		List<Student> studList=new ArrayList<Student>();
+		studList.add(new Student("Shubham", "Mishra"));
+		;
+		studList.add(new Student("Rohit", "Sharma"));;
+		studList.add(new Student("Virat", "Khoti"));;
+		studList.add(new Student("Shikhar", "Dhawan"));;
+		studList.add(new Student("Sachin", "Tendulkar"));
+		
+		return studList;
+		
+		
+	}
+	
+	//With the @PathVariable annotation we bind the request URL template path variable to the method variable
+	//http:localhost:8090/student/rohit/sharma
+	@GetMapping("/student/{firstName}/{lastName}")
+	public Student getStudentPathVariable(@PathVariable("firstName") String firstName, @PathVariable("lastName")String lastName) {
+		return new Student(firstName,lastName);
+	}
+	
+	
+	
+	//build api to handle query parameter
+	//http:localhost/student?firstName=rohit&lastName=sharma
+	//@RequestParam
+	//Annotation which indicates that a method parameter should be bound to a webrequest parameter. 
+	
+	@GetMapping("/student/query")
+	public Student getStudentQueryParam(@RequestParam(name="firstName") String firstName,@RequestParam(name="lastName") String lastName) {
+		return new Student(firstName,lastName);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

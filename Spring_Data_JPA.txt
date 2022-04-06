@@ -1,0 +1,325 @@
+What is Persistence Store?
+====================================
+|-Persistence means storage
+|-The place where will save our data is called Persisten store
+
+Persitent Operations
+======================
+|-Inserrting data
+|-Updating data
+|-Deleting data
+|-Retrieve data
+
+
+Persistent Technolgies
+=========================
+
+|-Persistent technologies are used to develop persistent logic
+
+|-Persistent logic is used to perform persistent operation in persistent store
+
+|-We have several technologies to develop persistent logic
+
+a) java JDBC
+b) Spring JDBC
+c)ORM Frameworks
+d)Spring Data etc..
+
+
+Best Practices to develop persistent logic
+=========================================
+
+|-We should maintain persistent logic as seperate layer(Dao layer or repository layer)
+
+|-Generally we will call it as "Data Access Layer"(DAO)
+
+|-In persistent logic we should follow Table per Dao Concept.
+
+|-For every table dedicated Dao we need to create.That dao only responsible to perform operations with that table(which improves readaiblity)
+
+USER_MASTER--------->UserMasterDao.java(I)
+                        |
+                    UserMasterDaoImpl.java
+
+ROLE_MASTER---------->RoleMasterDao.java(I)
+                           |
+                      RoleMasterDaoImpl.java(C)
+
+CO_TRIGGERS---------->CoTriggerDao.java
+
+ACNT_DTLS------------>AccntDtlsDao.java
+
+
+
+|-When we are creating table names,column names,sequence names the length limitation is 30 characters. if required name is having more than 30 characters generally people will ignore vowels(a,e,i,o,u) from the name
+
+USER_MASTER----->USR_MSTR
+
+CREDIT_CARD_NUMBER---->CRDT_CRD_NMBR
+
+|-For every table  atleast one primary key is highly recommended
+
+|-for every it is higly recommended to main below auditing colums
+
+CREATED_DATE
+CREATED_BY
+UPDATED_DATE
+UPDATED_BY
+
+|-fOR EVERY PRIMARY key create dedicated sequence to generate primary key column value
+
+|-Always recommeded to main cache for static tabled data to avoid DB interactions.
+
+
+Database Installation
+=========================
+1)Database Server
+2)Database Client
+
+|-In Company environment,DB server will be installed by DB admins in Remote machines
+
+|-After installing DB server,Db team will share Database details to team members
+
+-URL
+-Uname
+_PWD
+-Service Name
+
+|-Developers and Testers will install Database Client Software in their machines
+
+Ex:SQL Developer,
+
+
+Common Persistent Operations
+=============================
+
+-Insert one record
+-Insert multiple records at a time
+-update record
+-update multiple records at a time
+-retrieve one record
+-retrieve all records
+-retrieve few record
+-delete one record
+-delete few records at a time
+-delete all records
+-get count records
+
+|-To perform above operations we need to write methods in Dao interface and we should implement those method in DaoImpl class.
+
+|-If our project contains 1000 tables then we will create 1000 Dao interfaces.
+
+|-In all Dao interfaces above methods will be common
+
+|-We need to implement all Dao interfaces(we need to implement all those methods)
+
+Note: All the implementation classes will contains same logic(Boiler plate code)
+
+
+|-To avoid boiler plate code in Dao layer spring Data came into picture
+
+|-If we use Spring Data then we no need to even single method also method to perform above crud operations for tables.
+
+|-Spring Data providing predefined methods for us to perform crud operations.
+
+Spring Repository
+========================
+
+|-Spring Data provided 2 predefined repository interfaces,they are
+1.CrudRepository
+2.JpaRepository
+
+|-These two interfaces provided several methods to perform crud operations
+
+|-To use Spring Data Repository interfaces provided method we should create our own repository interface by extending Spring Data Repository interface.
+
+Ex:-
+
+public interface UserMasterRepo extends CrudRepository<E,Id>{}
+
+or
+
+public interface UserMasterRepo extends JpaRepository<E,Id>{}
+
+
+What is the difference between CrudRepository and JpaRepository?
+
+|-CrudRepository provied method to perform crud operations
+
+|-JpaRepository provided methods to perform crud operations+pagination+sorting
+
+Note: We can say JpaRepository is superior to CrudRepository
+
+
+Steps to develop SpringBoot application using Spring Data JPA
+==============================================================
+
+Note:Make sure Database server is installed in machine
+
+1)Create Spring Boot standalone application with below dependencies
+   1.spring-boot-starter
+   2.spring-boot-starter-data-jpa
+   3.Database Driver(Oracle Driver)
+   4.project Lombok
+
+2) Configure DataSource properties in application.properties file
+
+3)Create Entity class(java class---db table mapping)
+
+4)Create repository interface for our entity by extending Spring Data repository
+
+5) Test application behaviour
+
+
+
+Step-1 Create table into DB
+
+CREATE TABLE CONTACTS_MASTER(
+CONTACT_ID NUMBER(20) PRIMARY KEY,
+CONTACT_NAME VARCHAR2(20),
+CONTACT_NUMBER NUMBER(20)
+)
+
+
+Step-2 Define a class Which represents as an Entity
+
+package com.gst.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CONTACTS_MASTER")
+public class ContactMasterEntity {
+    @Id
+    @Column(name="CONTACT_ID")
+	private Integer contactId;
+    @Column(name="CONTACT_NAME")
+	private String contactName;
+    @Column(name="CONTACT_NUMBER")
+	private Long contactNumber;
+	public Integer getContactId() {
+		return contactId;
+	}
+	public void setContactId(Integer contactId) {
+		this.contactId = contactId;
+	}
+	public String getContactName() {
+		return contactName;
+	}
+	public void setContactName(String contactName) {
+		this.contactName = contactName;
+	}
+	public Long getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(Long contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+	@Override
+	public String toString() {
+		return "ContactMasterEntity [contactId=" + contactId + ", contactName=" + contactName + ", contactNumber="
+				+ contactNumber + "]";
+	}
+	
+}
+
+
+Step-3 Create a Repository
+==============================
+
+Repository(I)  Marker interface(is used to provide some instruction)
+    |
+CrudRepository(I)
+    |
+ContactsMasterRepository(I)
+
+package com.gst.repository;
+
+import java.io.Serializable;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.gst.entities.ContactMasterEntity;
+
+public interface ContactMasterRepo extends CrudRepository<ContactMasterEntity, Serializable>{
+	
+
+}
+
+
+What is CrudRepository?
+=========================
+|-CrudRepository is an interface provided by Spring data jpa
+|-In this interface we are having several methods which are used to perform crud operations.
+
+|-To Create user defined repository interface we will extend properties from this CrudRepository interface.
+
+public interface ContactMasterRepo extends CrudRepository<ContactMasterEntity, Serializable>{
+
+}
+
+|-If we create user defined repository interface,then implementation class  will be created in runtime for our user defined repository interface(Proxy class)
+
+
+Methods available in CrudRepository interface
+==============================================
+Object save(T entity):to insert record into table
+
+Note:Same method will perform update operation also
+
+When entity object contains primary key and of row is present in the table then record will be inserted.
+
+saveAll(Iterable<T> entities):
+================================
+
+|- To insert more than one record at a time we can go for this method
+
+|-This method is taking Iterable as a parameter
+|-Itereable is super interface Collection interface
+
+
+findById(Serializable id)
+===========================
+|-To retrieve record from table using primary key column value we will use this method
+
+findByAllById(Iterable<Serializable> ids)
+=============================================
+
+|-To retrieve records based on primary key column values we can use this method.
+
+findAll()
+==========
+|-To retrieve all records from table
+
+count()
+=========
+|-This method is used to get total no of rows available in table
+
+existsById(Serializable id)
+============================
+|-This method is used to verify record presence in table using PK column value
+
+|-If record presented it will give true else it will give false.
+
+
+deleteById(Serializable id)
+=================================
+
+|-This method is used to delete record record based PK colum value
+
+deleteAllById(Iterable<Serializable> ids)
+==========================================
+|-To delete more than one record based on PK column values
+
+deleteAll()
+============
+|-To delete all records from the table
+
+
+
+
+
+ 
