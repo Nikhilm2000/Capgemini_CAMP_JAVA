@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Success</title>
+</head>
+<body>
+	<div align="center">
+		<fieldset><legend><h2>Registration Succeeded!!</h2></legend>
+		<table>
+			<tr>
+				<td>Full name:</td>
+	    		<td><p th:text="${user.name}"></td>     
+			</tr>
+			<tr>   
+				<td>E-mail:</td>   
+				<td><p th:text="${user.email}"></td>
+			</tr>
+			<tr>   
+				<td>Password:</td>   
+				<td><p th:text="${user.password}"></td>
+			</tr>
+			<tr>
+	    		<td>Birthday:</td>
+	    		<td><p th:text="${user.dob}"></td>
+	    	</tr>
+	    	<tr>
+	    		<td>Gender:</td>
+	    		<td><p th:text="${user.gender}"></td>
+	    	</tr>
+	    	<tr>
+	    		<td>Profession:</td>
+	    		<td><p th:text="${user.profession}"></td>
+	    	</tr>
+	    	<tr>
+	    		<td>Married?</td>
+	    		<td><p th:text="${user.married}"></td>
+	    	</tr>
+	    	<tr>
+	    		<td>Note:</td>
+	    		<td><p th:text="${user.note}"></td>
+	    	</tr>
+	    	</fieldset>
+		</table>
+		
+	</div>
+	
+</body>
+</html>

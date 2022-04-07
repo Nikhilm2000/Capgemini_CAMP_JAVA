@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>User Registration</title>
+</head>
+<body>
+<div align="center">
+    <h1>User Registration</h1>
+    <a href="new">Create New User</a>
+    <br/><br/>
+    <table border="0" cellpadding="10">
+        <tbody>
+              <tr th:each="product : ${listProducts}">
+            	<td>User ID:</td>
+            	<td th:text="${product.id}">User ID</td>
+            	</tr>
+            <tr th:each="product : ${listProducts}">
+            	<td>Name:</td>
+                <td th:text="${product.name}">Name</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                <td>Email:</td>
+                <td th:text="${product.gender}">Email</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                <td>Password:</td>
+                <td th:text="${product.password}">Password</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                <td>Birthday:</td>
+                <td th:text="${product.birthday}">Birthday</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                <td>Gender:</td>
+                <td th:text="${product.gender}">Gender</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                <td>Profession:</td>
+                 <td th:text="${product.profession}">Profession</td>
+                 </tr>
+            <tr th:each="product : ${listProducts}">
+                 <td>Married:</td>
+                <td th:text="${product.married}">Married</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                <td>Note:</td>
+                <td th:text="${product.note}">note</td>
+                </tr>
+            <tr th:each="product : ${listProducts}">
+                
+                <td>
+                	<button type="submit"><a th:href="@{'/edit/' + ${product.id}}">Edit</a></button>
+                	&nbsp;&nbsp;&nbsp;
+                	<button type="submit"><a th:href="@{'/delete/' + ${product.id}}">Delete</a></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>
