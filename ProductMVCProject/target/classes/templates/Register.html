@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Registration Form</title>
+</head>
+<body>
+	<h2 align="center">User Registration</h2>
+	<div align="center">
+	    <form action="register" method="post">
+	    	<table>
+	    	
+	    		<tr>
+	    			<td>Full name:</td>
+	    			<td>&nbsp;&nbsp;<input type="text" name="name" /></td>
+	    		</tr>
+	    		<tr>
+					<td>E-mail:</td>
+					<td>&nbsp;&nbsp;<input type="text" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td>&nbsp;&nbsp;<input type="password" name="password" /></td>
+				</tr>
+	    		<tr>
+	    			<td>Birthday:</td>
+	    			<td>&nbsp;&nbsp;<input type="date" name="dob" /></td>
+	    		</tr>
+	    		<tr>
+	    			<td>Gender:</td>
+	    			<td>&nbsp;
+	    				<input type="radio" name="gender" value="Male"/>
+	    				<label>Male</label><br/>
+	    				<input type="radio" name="gender" value="Female"/>
+	    				<label>Female</label>
+					</td>
+				</tr>
+	    		<tr>
+	    			<td>Profession:</td>
+	    			<td>&nbsp;
+	    				<select name="profession">
+	    					<option value="Developer">Software Engineer </option>
+							<option value="Pilot">Pilot</option>
+							<option value="Doctor">Doctor</option>
+							<option value="Others">Others</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Married?</td>
+					<td>&nbsp;&nbsp;<input type="checkbox" name="married"></td>
+				</tr>
+				<tr>
+					<td>Note:</td>
+					<td>&nbsp;&nbsp;<textarea name="note"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="Register" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
